@@ -12,9 +12,14 @@ The Antlr grammars within the debezium-ddl-parser module are licensed under the 
 
 English | [Chinese](README_ZH.md)
 
-# How its used at Moengage 
+# How it's used at Moengage 
 
-https://moengagetrial.atlassian.net/wiki/spaces/DP/pages/2570420252/debezium-connector-mongodb
+
+## GitHub Branch
+
+There are two branched is being used
+* `debezium-connector-mongodb/1.5.0-db` - MongoDB oplogs's db name will be used in Kafka topic name.
+* `debezium-connector-mongodb/1.5.0-collection` - MongoDB oplogs's collection name will be used in Kafka topic name.
 
 
 # Debezium
