@@ -49,8 +49,8 @@ public class MongoDbTopicSelector {
         }
 
         sb.add(collectionId.dbName());
-        sb.add(collectionId.name());
+        // sb.add(collectionId.name());
 
-        return sb.toString();
+        return sb.toString().toLowerCase();
     }
 }
