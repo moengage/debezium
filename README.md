@@ -15,7 +15,7 @@ English | [Chinese](README_ZH.md)
 # How it's used at Moengage 
 
 debezium-connector-mongodb is is used as CDC pipeline for MongoDB oplogs.
-Read More at [debezium-connector-mongodb](https://github.com/moengage/debezium/tree/master/debezium-connector-mongodb)
+Read More at [debezium-connector-mongodb](https://github.com/moengage/debezium/tree/debezium-connector-mongodb/1.5.0-collection/debezium-connector-mongodb)
 
 ## GitHub Branch
 
