@@ -2,7 +2,12 @@
 
 This module defines the connector that ingests change events from MongoDB databases.
 
-## Docker Build
+## Build
+
+```
+debezium build - mvn clean install -DskipITs -Denforcer.skip=true  -DskipTests
+```
+## Docker 
 
 ```
 docker build -t data-platform/debezium-connector-mongodb:test .
