@@ -189,6 +189,9 @@ public class RecordMakers {
             Integer partition = null;
             Struct key = keyFor(objId);
             Struct value = new Struct(valueSchema);
+            if (operation == null) {
+                logger
+            }
             switch (operation) {
                 case READ:
                 case CREATE:
