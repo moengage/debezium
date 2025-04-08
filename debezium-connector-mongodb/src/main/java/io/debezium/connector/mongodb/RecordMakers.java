@@ -180,6 +180,10 @@ public class RecordMakers {
             String objId = o2 != null ? idObjToJson(o2) : idObjToJson(patchObj);
             assert objId != null;
             Operation operation = operationLiterals.get(oplogEvent.getString("op"));
+            if (operation == null) {
+                // skip the record if operation is null
+                return 0;
+            }
             return createRecords(sourceValue, offset, operation, objId, patchObj, timestamp);
         }
 
@@ -189,9 +193,6 @@ public class RecordMakers {
             Integer partition = null;
             Struct key = keyFor(objId);
             Struct value = new Struct(valueSchema);
-            if (operation == null) {
-                logger
-            }
             switch (operation) {
                 case READ:
                 case CREATE:
