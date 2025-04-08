@@ -181,8 +181,9 @@ public class RecordMakers {
             assert objId != null;
             Operation operation = operationLiterals.get(oplogEvent.getString("op"));
             if (operation == null) {
-                // skip the record if operation is null
-                return 0;
+                // if operation is null, set operation as Read.
+                operation = Operation.READ;
+                System.out.println("Operation is null, setting operation as Read, OpLogEvent:"+oplogEvent);
             }
             return createRecords(sourceValue, offset, operation, objId, patchObj, timestamp);
         }
