@@ -32,14 +32,14 @@ public class TopicSelectorTest {
     @Test
     public void shouldHandleCollectionIdWithDatabaseAndCollection() {
         assertTopic(noPrefix, dbAndCollection("db", "coll")).isEqualTo("coll");
-        assertTopic(withPrefix, dbAndCollection("db", "coll")).isEqualTo("prefix.db.coll");
+        assertTopic(withPrefix, dbAndCollection("db", "coll")).isEqualTo("prefix.coll");
     }
 
     @Test
     @FixFor("DBZ-878")
     public void shouldHandleCollectionIdWithInvalidTopicNameChar() {
         assertTopic(noPrefix, dbAndCollection("db", "my@collection")).isEqualTo("my_collection");
-        assertTopic(withPrefix, dbAndCollection("db", "my@collection")).isEqualTo("prefix.db.my_collection");
+        assertTopic(withPrefix, dbAndCollection("db", "my@collection")).isEqualTo("prefix.my_collection");
     }
 
     protected StringAssert assertTopic(TopicSelector<CollectionId> selector, CollectionId collectionId) {
