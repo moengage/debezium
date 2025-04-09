@@ -109,6 +109,7 @@ public class RecordMakers {
         private final Function<Document, String> valueTransformer;
         private final BlockingConsumer<SourceRecord> recorder;
         private final boolean emitTombstonesOnDelete;
+        private final Logger logger = LoggerFactory.getLogger(getClass());
 
         protected RecordsForCollection(CollectionId collectionId, FieldFilter fieldFilter, SourceInfo source, String topicName,
                 SchemaNameAdjuster adjuster, Function<Document, String> valueTransformer, BlockingConsumer<SourceRecord> recorder,
@@ -183,7 +184,7 @@ public class RecordMakers {
             if (operation == null) {
                 // if operation is null, set operation as Read.
                 operation = Operation.READ;
-                System.out.println("Operation is null, setting operation as Read, OpLogEvent:"+oplogEvent);
+                logger.debug("Operation is null, setting operation as Read, OpLogEvent:{}",oplogEvent);
             }
             return createRecords(sourceValue, offset, operation, objId, patchObj, timestamp);
         }
