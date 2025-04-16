@@ -187,6 +187,7 @@ public class Replicator {
                     }
                     else {
                         logger.error("Error while attempting to {}: {}", desc, error.getMessage(), error);
+                        error.printStackTrace();
                     }
                 });
 
