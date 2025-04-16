@@ -109,6 +109,7 @@ public class RecordMakers {
         private final Function<Document, String> valueTransformer;
         private final BlockingConsumer<SourceRecord> recorder;
         private final boolean emitTombstonesOnDelete;
+        private final Logger logger = LoggerFactory.getLogger(getClass());
 
         protected RecordsForCollection(CollectionId collectionId, FieldFilter fieldFilter, SourceInfo source, String topicName,
                 SchemaNameAdjuster adjuster, Function<Document, String> valueTransformer, BlockingConsumer<SourceRecord> recorder,
@@ -180,6 +181,11 @@ public class RecordMakers {
             String objId = o2 != null ? idObjToJson(o2) : idObjToJson(patchObj);
             assert objId != null;
             Operation operation = operationLiterals.get(oplogEvent.getString("op"));
+            if (operation == null) {
+                // if operation is null, skipping the event
+                logger.debug("Operation is null, skipping the event, OpLogEvent:{}",oplogEvent);
+                return -1;
+            }
             return createRecords(sourceValue, offset, operation, objId, patchObj, timestamp);
         }
 
