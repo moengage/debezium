@@ -124,7 +124,7 @@ public class UnwrapFromMongoDbEnvelopeTest {
         assertThat(key.get("id")).isEqualTo(objId.toString());
 
         // and then assert value and its schema
-        assertThat(value.schema().name()).isEqualTo("serverX.dbA.c1");
+        assertThat(value.schema().name()).isEqualTo("serverx.c1");
         assertThat(value.schema()).isSameAs(transformed.valueSchema());
         assertThat(value.get("name")).isEqualTo("Sally");
         assertThat(value.get("id")).isEqualTo(objId.toString());
@@ -617,7 +617,7 @@ public class UnwrapFromMongoDbEnvelopeTest {
         assertThat(value.schema().field("name").schema()).isEqualTo(SchemaBuilder.OPTIONAL_STRING_SCHEMA);
         assertThat(value.schema().field("address").schema()).isEqualTo(
                 SchemaBuilder.struct()
-                    .name("serverX.dbA.c1.address")
+                    .name("serverx.c1.address")
                     .optional()
                     .field("street", Schema.OPTIONAL_STRING_SCHEMA)
                     .field("zipcode", Schema.OPTIONAL_STRING_SCHEMA)
